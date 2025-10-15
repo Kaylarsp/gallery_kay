@@ -13,7 +13,13 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Galeri Latihan Flutter'),
+        title: const Text('Gallery'),
+        titleTextStyle: const TextStyle(
+          fontSize: 25,
+          fontWeight: FontWeight.bold,
+          color: Color.fromARGB(255, 255, 255, 255),
+        ),
+        backgroundColor: const Color.fromARGB(255, 211, 128, 128)
       ),
       body: GridView.builder(
         padding: const EdgeInsets.all(12.0),
