@@ -1,43 +1,43 @@
 import 'package:flutter/material.dart';
-import 'package:gallery_kay/models/photo_item.dart';
+import '../models/photo_item.dart';
 
-class GalleryState with ChangeNotifier {
-  final List<PhotoItem> _photo = [
+class GalleryState extends ChangeNotifier {
+  final List<PhotoItem> _photos = [
     PhotoItem(
       id: '1',
-      url: 'https://picsum.photos/id/10/400/400',
+      imageUrl: 'https://picsum.photos/id/10/400/400',
       title: 'Pemandangan Hutan',
-      description: 'Foto hutan pinus yang diambil pada pagi hari.',
+      description: 'Foto hutan pinus yang diambil pada pagi hari yang sejuk.',
     ),
     PhotoItem(
       id: '2',
-      url: 'https://picsum.photos/id/20/400/400',
+      imageUrl: 'https://picsum.photos/id/20/400/400',
       title: 'Jalanan Berliku',
-      description: 'Jalan aspal di pegunungan dengan pemandangan indah.',
+      description: 'Jalan aspal di pegunungan dengan pemandangan indah di sekelilingnya.',
     ),
     PhotoItem(
       id: '3',
-      url: 'https://picsum.photos/id/30/400/400',
+      imageUrl: 'https://picsum.photos/id/30/400/400',
       title: 'Secangkir Kopi',
-      description: 'Menikmati kopi di sore hari.',
+      description: 'Menikmati secangkir kopi hangat di sebuah kafe pada sore hari.',
     ),
     PhotoItem(
       id: '4',
-      url: 'https://picsum.photos/id/40/400/400',
+      imageUrl: 'https://picsum.photos/id/40/400/400',
       title: 'Laptop & Bekerja',
-      description: 'Suasana kerja yang tenang dan produktif.',
+      description: 'Suasana kerja yang tenang dan produktif di depan laptop.',
     ),
-    PhotoItem(
+     PhotoItem(
       id: '5',
-      url: 'https://picsum.photos/id/50/400/400',
+      imageUrl: 'https://picsum.photos/id/50/400/400',
       title: 'Pantai Tropis',
-      description: 'Pasir putih dan air laut yang jernih.',
+      description: 'Pemandangan pantai dengan pasir putih dan air laut yang jernih.',
     ),
     PhotoItem(
       id: '6',
-      url: 'https://picsum.photos/id/60/400/400',
-      title: 'Pegunungan Bersalju',
-      description: 'Puncak gunung yang tertutup salju abadi.',
+      imageUrl: 'https://picsum.photos/id/60/400/400',
+      title: 'Gunung Bersalju',
+      description: 'Puncak gunung megah yang tertutup oleh salju abadi.',
     ),
   ];
 
@@ -45,7 +45,7 @@ class GalleryState with ChangeNotifier {
   final Set<String> _likedPhotoIds = {};
 
   // Getter untuk mengakses daftar foto dari luar
-  List<PhotoItem> get photos => _photo;
+  List<PhotoItem> get photos => _photos;
 
   // Getter untuk mengakses foto yang di-like
   Set<String> get likedPhotoIds => _likedPhotoIds;

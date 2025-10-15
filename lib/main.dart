@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:gallery_kay/pages/home_page.dart';
-import 'package:gallery_kay/state/gallery_state.dart';
 import 'package:provider/provider.dart';
+import 'state/gallery_state.dart';
+import 'pages/home_page.dart';
 
 void main() {
-  runApp(const MyApp());
-  ChangeNotifierProvider(
-    create: (context) => GalleryState(),
-    child: MyApp(),
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => GalleryState(),
+      child: const MyApp(),
+    ),
   );
 }
 
@@ -17,12 +18,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      title: 'Galeri Keren',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.deepPurple,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: HomePage()
+      home: const HomePage(),
     );
-  } 
+  }
 }

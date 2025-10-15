@@ -1,55 +1,39 @@
 import 'package:flutter/material.dart';
-import 'package:gallery_kay/state/gallery_state.dart';
 import 'package:provider/provider.dart';
+import '../state/gallery_state.dart';
+import '../widgets/photo_grid_item.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final galleryState = Provider.of<GalleryState>(context);
+    final galleryState = context.watch<GalleryState>();
     final photos = galleryState.photos;
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Gallery App'),
-        titleTextStyle: const TextStyle(
-          color: Colors.white,
-          fontSize: 25,
-          fontWeight: FontWeight.bold,
-        ),
-        backgroundColor: const Color.fromRGBO(243, 126, 173, 1),
+        title: const Text('Galeri Latihan Flutter'),
       ),
       body: GridView.builder(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(12.0),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-          crossAxisSpacing: 10,
-          mainAxisSpacing: 10,
+          crossAxisSpacing: 12.0,
+          mainAxisSpacing: 12.0,
+          childAspectRatio: 1, // Membuat item menjadi kotak sempurna
         ),
         itemCount: photos.length,
         itemBuilder: (context, index) {
           final photo = photos[index];
           final isLiked = galleryState.isLiked(photo.id);
 
-          return GridTile(
-            footer: GridTileBar(
-              backgroundColor: Colors.black54,
-              title: Text(photo.title),
-              trailing: IconButton(
-                icon: Icon(
-                  isLiked ? Icons.favorite : Icons.favorite_border,
-                  color: isLiked ? Colors.red : Colors.white,
-                ),
-                onPressed: () {
-                  galleryState.toggleLike(photo.id);
-                },
-              ),
-            ),
-            child: Image.network(
-              photo.url,
-              fit: BoxFit.cover,
-            ),
+          return PhotoGridItem(
+            photo: photo,
+            isLiked: isLiked,
+            onLikeToggle: () {
+              galleryState.toggleLike(photo.id);
+            },
           );
         },
       ),
