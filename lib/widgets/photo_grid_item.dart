@@ -19,7 +19,6 @@ class PhotoGridItem extends StatelessWidget {
       borderRadius: BorderRadius.circular(16.0),
       child: GridTile(
         footer: GridTileBar(
-          backgroundColor: Colors.black45,
           title: Text(
             photo.title,
             style: const TextStyle(fontSize: 14),
